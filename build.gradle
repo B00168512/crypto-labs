@@ -1,0 +1,25 @@
+
+plugins {
+    id 'java'
+}
+
+apply plugin: 'java'
+apply plugin: 'java-library'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation "org.apache.commons:commons-lang3:3.17.0"
+    implementation "commons-codec:commons-codec:1.18.0"
+
+    testImplementation(platform("org.junit:junit-bom:5.10.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+}
+
+test {
+    useJUnitPlatform()
+}
