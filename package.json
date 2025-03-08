@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "bytebuffer": "^5.0.1",
+    "chacha20": "^0.1.4",
+    "crypto": "^1.0.1",
+    "install": "^0.13.0",
+    "rc4": "^0.1.5",
+    "rc4-cipher": "^1.0.0"
+  }
+}

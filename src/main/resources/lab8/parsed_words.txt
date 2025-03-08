@@ -1,0 +1,32 @@
+Salted Hashes
+Labs have been tested with Ubuntu 16.0 & 18.04 but should work on most Linux distributions
+Overview
+You’ve been asked by the Garda to assist in helping to retrieve some hashed passwords. They have managed
+to get a dump of one of the database tables, however they still need the original passwords and have been
+unable to crack them themselves and have called in your help.
+The issue seems to be that the database is only storing the password hashes, and so far their attempts to
+brute force the passwords have failed.
+They have tried their standard rainbow tables without success and suspect that the passwords may have
+been salted. A brief analysis of the hashes supports this belief and indicates that all the passwords have been
+hashed with the same salt
+Lab Tasks
+2.1 Task 1: Can you help the Garda and crack any of the salted hashed passwords?
+Some potentially useful information from the Garda case files:
+The password policy file was changed in May 2010, passwords created after this date are
+ alphanumeric 5-7 characters in length.
+Passwords created before these dates are believed to have consisted of only digits and 5-7 characters in length. It’s believed that all passwords have used the same salt, and that the value is somewhere in our data. (In this document!!)
+The database dump was from a MySQL database.
+The site’s domain name where the garda extracted all the files and databse dump from is
+www.exploringsecurity.com (no need to visit or do anything on this actual website)
+Some of the captured JavaScript code from the site, reveals the salt format as
+CommonHash($salt,$pass)
+Retrieve as much information as you can from the dump below for the Garda.
+There are plenty of methods and tools you can use to solve this challenge, including scripting it yourself or
+researching and finding a good tool for brute forcing hashes. You'll need to read the case information
+carefully for clues and plan your strategy of attack to maximize your chances of recovering as many
+passwords as possible.
+3 Submission
+You need to submit a detailed lab report, with screenshots, to describe what you have done and what you
+have observed. You also need to provide explanation to the observations that are interesting or surprising.
+Please also list the important code snippets followed by explanation. Simply attaching code without any
+explanation will not receive credits

@@ -17,6 +17,8 @@ dependencies {
     implementation "commons-codec:commons-codec:1.18.0"
     implementation "org.apache.commons:commons-imaging:1.0.0-alpha5"
 
+    implementation "org.bouncycastle:bcprov-jdk18on:1.80"
+
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
