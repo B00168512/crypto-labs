@@ -1,14 +1,14 @@
 package tud.b00168512.lab8;
 
-import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.Security;
-import java.util.List;
+import java.util.Set;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 /**
- * CRACKED! Password: 54321; SHA-1: 06f6fe0f73c6e197ee43eff4e5f7d10fb9e438b2
+ * Password: 54321;  SHA-1: 06f6fe0f73c6e197ee43eff4e5f7d10fb9e438b2
+ * Password: 121298; SHA-1: fafa4483874ec051989d53e1e432ba3a6c6b9143
  */
 public class HackedDigitPasswords {
 
@@ -17,35 +17,28 @@ public class HackedDigitPasswords {
 
     private static final String SALT = "www.exploringsecurity.com";
 
-    private static final String DIGIT_HASH_1 = "06f6fe0f73c6e197ee43eff4e5f7d10fb9e438b2";
-    private static final String DIGIT_HASH_2 = "fafa4483874ec051989d53e1e432ba3a6c6b9143";
-
-    private static final List<String> OLD_HASHES = List.of(DIGIT_HASH_1, DIGIT_HASH_2);
-
-    private static final int MIN_DIGIT_PASSWORD = 10000;
-    private static final int MAX_DIGIT_PASSWORD = 9999999;
+    private static final String TOMTOM_SHA_1_HASH = "06f6fe0f73c6e197ee43eff4e5f7d10fb9e438b2";
+    private static final String SECURITY_SHA_1_HASH = "fafa4483874ec051989d53e1e432ba3a6c6b9143";
 
     static {
         Security.addProvider(new BouncyCastleProvider());
     }
 
     public static void main(String[] args) throws Exception {
+        hashBruteForce(Set.of(SECURITY_SHA_1_HASH, TOMTOM_SHA_1_HASH));
+    }
 
-        var md = MessageDigest.getInstance(SHA_1, BC_PROVIDER);
-
-        for (var digitHash : OLD_HASHES) {
-            var hashAsBytes = new BigInteger(digitHash, 16).toByteArray();
+    private static void hashBruteForce(Set<String> targetHashes) throws Exception {
+        for (String targetHash : targetHashes) {
+            var md = MessageDigest.getInstance(SHA_1, BC_PROVIDER);
             // Password is in digits only and the length is min: 5 max: 7
-            for (int i = 0; i <= MAX_DIGIT_PASSWORD; i++) {
-                var rawPwd = "";
-                if (i < MIN_DIGIT_PASSWORD) {
-                    rawPwd = String.format("%05d", i);
-                } else {
-                    rawPwd = String.valueOf(i);
-                }
-                var generatedHash = HashGenerator.calculateHash(md, SALT.getBytes(), rawPwd.getBytes());
-                if (MessageDigest.isEqual(hashAsBytes, generatedHash)) {
-                    System.out.println("CRACKED! Password: " + i + "; SHA-1: " + digitHash);
+            for (int i = 10000; i < 10000000; i++) {
+                var rawPwd = String.valueOf(i);
+
+                var generatedHashHex = HashGenerator.calculateHashAsHexString(md, SALT.getBytes(), rawPwd.getBytes());
+
+                if (targetHash.equals(generatedHashHex)) {
+                    System.out.println("CRACKED!! Password: " + i + "; SHA-1: " + targetHash);
                     break;
                 }
             }
