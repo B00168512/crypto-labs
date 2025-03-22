@@ -12,24 +12,24 @@ class Lab11Test {
     @Test
     void decodeStep1() {
         var secret = "hello1";
-        var ciphertext = Lab11.ENCODERS.STEP_1.function.apply(secret);
-        var plaintext = Lab11.DECODERS.STEP_1.function.apply(ciphertext);
+        var ciphertext = Lab11.step1(secret);
+        var plaintext = Lab11.decodeStep1(ciphertext);
         assertEquals(secret, plaintext);
     }
 
     @Test
     void decodeStep2() {
         var secret = "hello2";
-        var ciphertext = Lab11.ENCODERS.STEP_2.function.apply(secret);
-        var plaintext = Lab11.DECODERS.STEP_2.function.apply(ciphertext);
+        var ciphertext = Lab11.step2(secret);
+        var plaintext = Lab11.decodeStep2(ciphertext);
         assertEquals(secret, plaintext);
     }
 
     @Test
     void decodeStep3() {
         var secret = "hello3";
-        var ciphertext = Lab11.ENCODERS.STEP_3.function.apply(secret);
-        var plaintext = Lab11.DECODERS.STEP_3.function.apply(ciphertext);
+        var ciphertext = Lab11.step3(secret);
+        var plaintext = Lab11.decodeStep3(ciphertext);
         assertEquals(secret, plaintext);
     }
 

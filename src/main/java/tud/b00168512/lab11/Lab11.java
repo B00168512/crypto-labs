@@ -116,7 +116,7 @@ public class Lab11 {
         return translate(input, reversedTranslationTable);
     }
 
-    enum ENCODERS {
+    private enum ENCODERS {
 
         STEP_1(Lab11::step1),
 
@@ -131,7 +131,7 @@ public class Lab11 {
         }
     }
 
-    enum DECODERS {
+    private enum DECODERS {
 
         STEP_1(Lab11::decodeStep1),
 
