@@ -1,6 +1,7 @@
 package tud.b00168512.lab11;
 
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 import java.util.Base64;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -43,6 +44,13 @@ public class Lab11 {
             secret = String.format("%s%s", encoder.ordinal() + 1, encoded);
         }
         return secret;
+    }
+
+    public static void main(String[] args) {
+        var p = Paths.get("audio/Coldplay/album1");
+        System.out.println(p);
+        System.out.println(p.getRoot());
+        System.out.println(p.subpath(0, 1));
     }
 
     static Result decryptSecret(String ciphertext) {
