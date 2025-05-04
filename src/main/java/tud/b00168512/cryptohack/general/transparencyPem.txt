@@ -1,0 +1,10 @@
+1) Convert pem to der (pem is in project's Resources folder):
+openssl pkey -in transparency.pem -outform DER -out transparency.der
+2) Get SHA-256 hash of the DER:
+sha256sum transparency.der
+This will give the hash: 29ab37df0a4e4d252f0cf12ad854bede59038fdd9cd652cbc5c222edd26d77d2
+3) Using https://search.censys.io to search certificate by this hash
+Subdomain in CN field: thetransparencyflagishere.cryptohack.org
+4) Entering it browser renders: crypto{thx_redpwn_for_inspiration}
+
+
